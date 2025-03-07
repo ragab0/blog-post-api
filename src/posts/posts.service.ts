@@ -6,7 +6,7 @@ import { Comment } from './entities/comment.entity';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PaginationDto } from './dto/pagination.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '../users/entities/user.entity';
 // import { CreateCommentDto } from './dto/create-comment.dto';
 
 @Injectable()

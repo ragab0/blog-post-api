@@ -6,8 +6,6 @@ import { Post } from './entities/post.entity';
 import { Comment } from './entities/comment.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { UsersService } from 'src/users/users.service';
-import { UsersModule } from 'src/users/users.module';
 import { User } from 'src/users/entities/user.entity';
 
 @Module({

@@ -20,7 +20,5 @@
     "strict": false,
     "noEmitOnError": false
   },
-  "include": [
-    "types/**/*.d.ts" // Include declaration files
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "types/**/*.ts"]
 }

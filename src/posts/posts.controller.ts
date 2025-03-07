@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import {
   Controller,
   Get,
@@ -12,9 +14,9 @@ import {
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { PaginationDto } from './dto/pagination.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { AuthGuard } from '../auth/guards/auth.guard';
 // import { UpdatePostDto } from './dto/update-post.dto';
 // import { CreateCommentDto } from './dto/create-comment.dto';
 
