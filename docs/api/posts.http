@@ -7,7 +7,7 @@ GET http://localhost:3000/api/posts/8ab272f1-8ed0-4d31-aa6b-3baaabb1c8e8
 
 ###
 
-POST http://localhost:3000/api/posts
+POST https://devblog-api-q9ij.onrender.com/api/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YWM1NjdjZC1lZWU2LTRlNTctYWRkYi05NjBmNjA1YTljOTgiLCJpYXQiOjE3NDEzMjQzMDAsImV4cCI6MTc0MzkxNjMwMH0.wN6TfGVOEknIbftmLv60V2UZf5d_3OHLmJuhY6CJeWM
 Content-Type: application/json
 

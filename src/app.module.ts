@@ -4,9 +4,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
-import { User } from './users/entities/user.entity';
-import { Post } from './posts/entities/post.entity';
-import { Comment } from './posts/entities/comment.entity';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -25,10 +22,13 @@ import { AppService } from './app.service';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
-        entities: [User, Post, Comment],
-        synchronize: configService.get('NODE_ENV') === 'development',
+        autoLoadEntities: true,
         logging: configService.get('NODE_ENV') === 'development',
         uuidExtension: 'uuid-ossp',
+        synchronize: true /** WARNING: TILL WE use migration instead */,
+        // synchronize: configService.get('NODE_ENV') === 'development',
+        // migrations: ['dist/migrations/*.js'], // [Version Control, Safety, Reproducibility, ROLLBACK]
+        // migrationsRun: true, // Automatically run migrations on startup
       }),
       inject: [ConfigService],
     }),
