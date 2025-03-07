@@ -1,8 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import * as bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import { RegisterDto } from './dto/register.dto';
@@ -35,6 +31,7 @@ export class AuthService {
 
     console.log('user', user);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...result } = user;
     const accessToken = await this.generateToken(user.id);
     console.log(
@@ -61,6 +58,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...result } = user;
     const accessToken = await this.generateToken(user.id);
     console.log(`new login issued: ${user.email} ${new Date().toUTCString()}`);

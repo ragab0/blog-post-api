@@ -12,13 +12,11 @@ import {
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
-// import { UpdatePostDto } from './dto/update-post.dto';
-// import { CreateCommentDto } from './dto/create-comment.dto';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { PaginationDto } from './dto/pagination.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-// import { PaginationDto } from './dto/pagination.dto';
-// import { RegisterDto } from 'src/auth/dto/register.dto';
+// import { UpdatePostDto } from './dto/update-post.dto';
+// import { CreateCommentDto } from './dto/create-comment.dto';
 
 @Controller('posts')
 export class PostsController {
