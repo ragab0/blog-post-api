@@ -1,5 +1,6 @@
 # me
 /private
+*.env.*
 
 # compiled output
 /dist
