@@ -19,5 +19,8 @@
     "noFallthroughCasesInSwitch": false,
     "strict": false,
     "noEmitOnError": false
-  }
+  },
+  "include": [
+    "types/**/*.d.ts" // Include declaration files
+  ]
 }
