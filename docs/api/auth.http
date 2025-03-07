@@ -1,0 +1,24 @@
+GET http://localhost:3000/api/auth/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YWM1NjdjZC1lZWU2LTRlNTctYWRkYi05NjBmNjA1YTljOTgiLCJpYXQiOjE3NDEzMjQzMDAsImV4cCI6MTc0MzkxNjMwMH0.wN6TfGVOEknIbftmLv60V2UZf5d_3OHLmJuhY6CJeWM
+
+### 
+
+POST http://localhost:3000/api/auth/register/
+Content-Type: application/json
+
+{
+  "name": "ragab",
+  "email": "ragab5.dev@gmail.com",
+  "password": "12345678",
+  "avatar": ""
+}
+
+###
+
+POST http://localhost:3000/api/auth/login/
+Content-Type: application/json
+
+{
+  "email": "ragab4.dev@gmail.com",
+  "password": "12345678"
+}

@@ -1,0 +1,31 @@
+# GET http://localhost:3000/api/posts?page=1&limit=2
+GET http://localhost:3000/api/posts
+
+###
+
+GET http://localhost:3000/api/posts/8ab272f1-8ed0-4d31-aa6b-3baaabb1c8e8
+
+###
+
+POST http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YWM1NjdjZC1lZWU2LTRlNTctYWRkYi05NjBmNjA1YTljOTgiLCJpYXQiOjE3NDEzMjQzMDAsImV4cCI6MTc0MzkxNjMwMH0.wN6TfGVOEknIbftmLv60V2UZf5d_3OHLmJuhY6CJeWM
+Content-Type: application/json
+
+{
+  "title": "my-first-post-2",
+  "content": "12345678901"
+}
+
+###
+
+PUT http://localhost:3000/api/posts/8ab272f1-8ed0-4d31-aa6b-3baaabb1c8e8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YWM1NjdjZC1lZWU2LTRlNTctYWRkYi05NjBmNjA1YTljOTgiLCJpYXQiOjE3NDEzMjQzMDAsImV4cCI6MTc0MzkxNjMwMH0.wN6TfGVOEknIbftmLv60V2UZf5d_3OHLmJuhY6CJeWM
+Content-Type: application/json
+
+{
+  "title": "my-first-post-20"
+}
+###
+
+DELETE http://localhost:3000/api/posts/8ab272f1-8ed0-4d31-aa6b-3baaabb1c8e8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YWM1NjdjZC1lZWU2LTRlNTctYWRkYi05NjBmNjA1YTljOTgiLCJpYXQiOjE3NDEzMjQzMDAsImV4cCI6MTc0MzkxNjMwMH0.wN6TfGVOEknIbftmLv60V2UZf5d_3OHLmJuhY6CJeWM
