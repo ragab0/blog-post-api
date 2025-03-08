@@ -17,20 +17,40 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { PaginationDto } from './dto/pagination.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { AuthGuard } from '../auth/guards/auth.guard';
-// import { UpdatePostDto } from './dto/update-post.dto';
-// import { CreateCommentDto } from './dto/create-comment.dto';
+import { PostResponseDto } from './dto/post-response.dto';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 
+@ApiTags('Posts')
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Post()
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Create a new blog post' })
+  @ApiResponse({
+    status: 201,
+    description: 'Post created successfully',
+    type: PostResponseDto,
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized - Invalid token' })
   async create(@Request() req: any, @Body() CreatePostDto: CreatePostDto) {
     return await this.postsService.create(req.user.id, CreatePostDto);
   }
 
   @Get()
+  @ApiOperation({ summary: 'Get all posts with pagination' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns paginated posts',
+    type: [PostResponseDto],
+  })
   async findAll(@Query() paginationDto: PaginationDto) {
     paginationDto.page = paginationDto.page || 1;
     paginationDto.limit = paginationDto.limit || 10;
@@ -38,12 +58,28 @@ export class PostsController {
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Get a post by ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns the post',
+    type: PostResponseDto,
+  })
+  @ApiResponse({ status: 404, description: 'Post not found' })
   async findOne(@Param('id') id: string) {
     return await this.postsService.findOne(id);
   }
 
   @Put(':id')
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Update a post' })
+  @ApiResponse({
+    status: 200,
+    description: 'Post updated successfully',
+    type: PostResponseDto,
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized - Invalid token' })
+  @ApiResponse({ status: 404, description: 'Post not found' })
   async update(
     @Param('id') id: string,
     @Request() req: any,
@@ -54,6 +90,22 @@ export class PostsController {
 
   @Delete(':id')
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Delete a post' })
+  @ApiResponse({
+    status: 200,
+    description: 'Post deleted successfully',
+    schema: {
+      properties: {
+        message: {
+          type: 'string',
+          example: 'Post deleted successfully',
+        },
+      },
+    },
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized - Invalid token' })
+  @ApiResponse({ status: 404, description: 'Post not found' })
   async remove(@Param('id') id: string, @Request() req: any) {
     await this.postsService.remove(id, req.user.id);
     return { message: 'Post deleted successfully' };

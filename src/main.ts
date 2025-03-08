@@ -15,8 +15,13 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('DevBlog API')
-    .setDescription('The blog API description')
+    .setDescription(
+      'The DevBlog API - A comprehensive blogging platform API with authentication, posts, comments, and user management',
+    )
     .setVersion('1.0')
+    .addBearerAuth()
+    // .addTag('auth', 'Authentication endpoints')
+    // .addTag('posts', 'Blog posts endpoints')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
