@@ -9,6 +9,16 @@ import { UpdatePostDto } from './dto/update-post.dto';
 import { User } from '../users/entities/user.entity';
 // import { CreateCommentDto } from './dto/create-comment.dto';
 
+interface PostQuery {
+  id: string;
+  title: string;
+  content: string;
+  createdat: Date;
+  authorid: string;
+  authorname: string;
+  authoravatar: string;
+}
+
 @Injectable()
 export class PostsService {
   constructor(
@@ -73,6 +83,7 @@ export class PostsService {
       .leftJoin('post.author', 'author')
       .select([
         'post.id AS id',
+        'post.title AS title',
         'SUBSTRING(post.content, 1, 20) AS content', // Truncate content
         'post.createdAt AS createdAt',
         'author.id AS authorId',
@@ -83,8 +94,21 @@ export class PostsService {
       .skip((paginationDto.page - 1) * paginationDto.limit)
       .take(paginationDto.limit);
 
-    const posts = await queryBuilder.getRawMany();
+    const rawPosts = await queryBuilder.getRawMany();
     const total = await queryBuilder.getCount();
+
+    // Map flat fields to nested objects
+    const posts = rawPosts.map((post: PostQuery) => ({
+      id: post.id,
+      title: post.title,
+      content: post.content,
+      createdAt: post.createdat,
+      author: {
+        id: post.authorid,
+        name: post.authorname,
+        avatar: post.authoravatar,
+      },
+    }));
 
     return {
       items: posts,
